@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "dev": "bunx npm-run-all2 --parallel dev:frontend dev:backend",
+    "dev:frontend": "bun run --bun next dev",
+    "dev:backend": "convex dev",
+    "build": "bun run --bun next build",
+    "start": "bun run --bun next start",
+    "lint": "eslint",
+    "deploy:prod": "bunx vercel --prod"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -46,6 +49,7 @@
     "lucide-react": "^0.562.0",
     "next": "16.1.1",
     "next-themes": "^0.4.6",
+    "npm-run-all2": "^8.0.4",
     "react": "^19.2.3",
     "react-day-picker": "^9.13.0",
     "react-dom": "19.2.3",
