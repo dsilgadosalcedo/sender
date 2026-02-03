@@ -9,7 +9,8 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
-import { Copy, ChevronDown, ChevronRight } from "lucide-react";
+import { Copy, ChevronRight } from "lucide-react";
+import { toast } from "sonner";
 
 const LANGUAGES = [
   "javascript",
@@ -71,9 +72,10 @@ export default function Home() {
   const copyToClipboard = async (code: string) => {
     try {
       await navigator.clipboard.writeText(code);
-      // You could add a toast notification here if you have one
+      toast.success("Code copied to clipboard!");
     } catch (err) {
       console.error("Failed to copy:", err);
+      toast.error("Failed to copy code");
     }
   };
 
